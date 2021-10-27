@@ -1,2 +1,3 @@
-require_relative './lib/app'
+# Run with rackup
+require_relative './app'
 run BattleApp
