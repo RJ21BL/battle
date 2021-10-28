@@ -1,15 +1,25 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 
-class BattleApp < Sinatra::Base
+class Battle < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
   end
 
+  # get '/' do
+  #   'Testing infrastructure working!'
+  #   # erb(:start)
+  # end
+
   get '/' do
-    #  'Hello Battle!'
-    erb(:start)
+    erb(:index)
   end
 
-    run! if app_file == $0
+  post '/names' do
+    @player_1_name = params[:player_1_name]
+    @player_2_name = params[:player_2_name]
+    erb(:play)
+  end
+
+  run! if app_file == $0
 end
